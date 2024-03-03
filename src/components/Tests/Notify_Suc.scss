@@ -1,0 +1,362 @@
+.noti_test {
+
+
+  .notify_body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+    overflow: hidden;
+  }
+
+  .toast {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    border-radius: 12px;
+    padding: 20px 35px 20px 25px;
+    background: #bdbcbc;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-left: 6px solid #4070f4;
+    overflow: hidden;
+    transform: translateX(100%);
+    // transform: translateX(calc(100% + 30px));   
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+    display: none;
+  }
+
+  .toast.active {
+    display: initial;
+    //transform: translateX(0%);
+    transform: translateX(0);
+
+  }
+
+  .toast-content {
+    display: flex;
+    align-items: center;
+  }
+
+  .check {
+    height: 35px;
+    width: 35px;
+    background-color: #4070f4;
+    display: flex;
+    color: white;
+    border-radius: 50%;
+  }
+
+  .message {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+  }
+
+  .text {
+    font-size: 20px;
+    font-weight: 400;
+    color: #666666;
+  }
+
+  .text-1 {
+    font-weight: 600;
+    color: #333;
+  }
+
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: #ddd;
+  }
+
+  .progress::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: #333;
+  }
+
+  .toast.active .progress.active::before {
+    animation: progress 5s linear forwards;
+  }
+
+
+  @keyframes progress {
+    100% {
+      width: 100%;
+      left: 0;
+    }
+  }
+
+
+  .custom-ui {
+    width: 500px;
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 10px;
+    background: linear-gradient(315deg, #033185, #032970);
+    box-shadow: -20px -20px 60px #032769, 20px 20px 60px #03358f;
+    color: #fff;
+
+    button {
+      padding: 8px 36px;
+      outline: none;
+      border-radius: 8px;
+      border: none;
+      margin-right: 8px;
+
+      &:hover {
+        box-shadow: 0px 0px 0px #bdbdbd, 0px 0px 0px #ffffff, inset 4px 4px 8px #bdbdbd, inset -4px -4px 8px #ffffff;
+      }
+    }
+  }
+
+  .my-custom-ui-container {
+    .react-confirm-pro__overlay {
+      background: linear-gradient(315deg, #033185, #032970);
+    }
+  }
+
+  .custom-buttons {
+    text-align: center;
+
+    button {
+      padding: 8px 36px;
+      outline: none;
+      border-radius: 8px;
+      border: none;
+      margin-right: 8px;
+
+      &:hover {
+        box-shadow: 0px 0px 0px #bdbdbd, 0px 0px 0px #ffffff, inset 4px 4px 8px #bdbdbd, inset -4px -4px 8px #ffffff;
+      }
+    }
+  }
+
+  .react-confirm-pro__preview {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
+
+    .react-confirm-pro__actions {
+      button {
+        padding: 12px 36px;
+        outline: none;
+        border-radius: 8px;
+        border: none;
+        margin-right: 8px;
+        box-shadow: 4px 4px 8px #bdbdbd, -4px -4px 8px #ffffff, inset 0px 0px 0px #bdbdbd, inset 0px 0px 0px #ffffff;
+        transition: all 0.1s linear;
+
+        &:hover {
+          box-shadow: 0px 0px 0px #bdbdbd, 0px 0px 0px #ffffff, inset 4px 4px 8px #bdbdbd, inset -4px -4px 8px #ffffff;
+        }
+      }
+    }
+  }
+}
+
+.button_test {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: consolas;
+
+  .btn_body {
+    margin-right: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-wrap: wrap;
+    background: linear-gradient(45deg, #3f51b5, #e91e63);
+    gap: 50px;
+
+
+
+
+    .test_btn {
+      position: relative;
+      padding: 20px 40px;
+      color: #fff;
+      text-decoration: none;
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 2.5em;
+      border: 2px solid transparent;
+      transition: 0.5s;
+
+      &:hover {
+        border: 2px solid #fff;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0 8px;
+        border-left: 2px solid #fff;
+        border-right: 2px solid #fff;
+        transition: 1s;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 8px 0;
+        border-top: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        transition: 1s;
+      }
+
+
+    }
+
+    //btn1
+    .btn1 {
+      &:hover::before {
+        inset: 16px 8px;
+      }
+
+      &:hover::after {
+        inset: 8px 16px;
+      }
+    }
+
+    //btn2
+    .btn2 {
+      &:hover::before {
+        inset: 0 8px;
+        transform: rotateY(180deg);
+      }
+
+      &:hover::after {
+        inset: 8px 0;
+        transform: rotateX(180deg);
+      }
+    }
+
+    //btn3
+    .btn3 {
+      &:hover::before {
+        inset: 0 -12px;
+        transform: skewY(15deg);
+      }
+
+      &:hover::after {
+        inset: -12px 0;
+        transform: skewX(15deg);
+      }
+    }
+
+
+    .test_btn.btn4:hover,
+    .test_btn.btn5:hover,
+    .test_btn.btn6:hover {
+      border-color: transparent;
+    }
+
+    //btn4
+    .btn4 {
+      &:hover::before {
+        inset: 0 30px;
+        transform: skew(25deg);
+      }
+
+      &:hover::after {
+        inset: 10px 0;
+        transform: skew(-25deg);
+      }
+    }
+
+
+    //btn5
+    .btn5 {
+
+      &:hover::before,
+      &:hover::after {
+        inset: 0;
+      }
+
+    }
+
+
+    //btn6
+    .btn6 {
+      &:hover::before {
+        inset: 0 -0;
+        transform: rotate(-10deg);
+      }
+
+      &:hover::after {
+        inset: 0 -4px;
+        transform: rotate(5deg);
+      }
+    }
+
+  }
+
+}
+
+.from_style1{
+  .container{
+    .from{
+      .inputbox{
+        position: relative;
+        margin: 20px;
+        p{
+          padding: 12px 10px 12px 48px;
+          border: none;
+          width: 60%;
+          background: #333;
+          border: 1px solid #00dfc4;
+          color: #fff;
+          font-weight: 300;
+          border-radius: 25px;
+          font-size: 1rem;
+          box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+          5px 5px 15px rgba(0, 0, 0, 0.35);
+        }
+        span {
+          color: #00dfc4;
+          border: 1px solid #00dfc4;
+          background: #223243;
+          font-size: 0.6rem;
+          padding: 0 8px;
+          border-radius: 25px;
+          position: absolute; /* position the span absolutely within the inputbox */
+          top: -7px; /* move the span up by 10px from the top of the inputbox */
+          left: 25px; /* move the span 25px from the left of the inputbox */
+        }
+        
+
+      }
+    }
+  }
+ 
+}
