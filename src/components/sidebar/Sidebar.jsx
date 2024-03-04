@@ -25,9 +25,12 @@ import AddchartIcon from '@mui/icons-material/Addchart';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 
 
-const Sidebar = () => {
+const Sidebar = ({ userId }) => {
+
+    // console.log("side id",userId);
 
     const { dispatch: darkModeDispatch } = useContext(DarkModeContext);
+    const { uid } = useContext(AuthContext);
 
     //selected link 
     const [clickedElement, setClickedElement] = useState(
@@ -88,7 +91,33 @@ const Sidebar = () => {
                         </li>
                     </Link>
 
-                   
+                    <Link to="/Inventory" style={{ textDecoration: "none" }} >
+                        <li onClick={() => handleClickedElement("Inventory")} className={clickedElement === "Inventory" ? "selected" : ""}>
+                            <ProductionQuantityLimitsIcon className="iocn" />
+                            <span> Inventory </span>
+                        </li>
+                    </Link>
+
+                    <Link to="/PLAnalysis" style={{ textDecoration: "none" }} >
+                        <li onClick={() => handleClickedElement("PLAnalysis")} className={clickedElement === "PLAnalysis" ? "selected" : ""}>
+                            <ProductionQuantityLimitsIcon className="iocn" />
+                            <span> PLAnalysis </span>
+                        </li>
+                    </Link>
+                    
+                    <Link to="/Forecast" style={{ textDecoration: "none" }} >
+                        <li onClick={() => handleClickedElement("Forecast")} className={clickedElement === "Forecast" ? "selected" : ""}>
+                            <ProductionQuantityLimitsIcon className="iocn" />
+                            <span> Forecast </span>
+                        </li>
+                    </Link>
+
+                    <Link to="/Promo" style={{ textDecoration: "none" }} >
+                        <li onClick={() => handleClickedElement("Promo")} className={clickedElement === "Promo" ? "selected" : ""}>
+                            <ProductionQuantityLimitsIcon className="iocn" />
+                            <span> Promo </span>
+                        </li>
+                    </Link>
 
                     <p className="title"> USEFULL </p>
                     {/* ----------------------------Usefull start ----------------*/}

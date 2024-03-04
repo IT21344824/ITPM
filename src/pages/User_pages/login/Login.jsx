@@ -16,8 +16,7 @@ const Login = () => {
 
   const { dispatch } = useContext(AuthContext);
 
-  const [data, setData] = useState({});
-  const [user, setUser] = useState(null); 
+
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -25,22 +24,15 @@ const Login = () => {
       .then((userCredential) => {
 
         const user = userCredential.user;    
-        setUser(user);
+       
 
         const docRef = doc(db, "Users", user.uid);
         const unsubscribe = onSnapshot(
           docRef,
           async (doc) => {
-            if (doc.exists()) {
-              const data = doc.data();
-              setData(data);
-              if (data.role === "Admins") {
+            if (doc.exists()) {         
                 dispatch({ type: "LOGIN", payload: user });
-                navigate("/");
-              } else {
-                alert("User is not an Admin. Login not allowed.");
-                console.log("User is not an Admin. Login not allowed.");
-              }
+                navigate("/", { state: { userId: user.uid } });      
             } else {
               console.log("No such document!");
             }

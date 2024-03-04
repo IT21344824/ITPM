@@ -1,0 +1,41 @@
+.Inv_char {
+    .datatable {
+        height: 630px;
+        padding: 20px;
+
+
+
+
+        .datatableTitle {
+            width: 99%;
+            font-size: 24px;
+            color: gray;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+            -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+            border-radius: 10px;
+
+
+
+        
+
+        }
+
+
+        .datagrid {
+            width: 100%;
+            padding: 10px;
+            box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+            -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+            border-radius: 10px;
+            margin: 0 30px 30px 0;
+
+        }
+
+      
+    }
+}
