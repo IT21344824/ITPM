@@ -21,9 +21,9 @@ import AdminNew from "./pages/User_pages/new/Admin_new";
 import Ad_single from "./pages/User_pages/single/Employe";
 
 // Inventory_magagement
-import Inventory_List from "./pages/Product_pages/list/Product";
-import Inventory_ID from "./pages/Product_pages/single/Product_ID";
-import Inventory_New from "./pages/Product_pages/new/Product_New";
+import Inventory_List from "./pages/Akidu_pages/list/Product";
+import Inventory_ID from "./pages/Akidu_pages/single/Product_ID";
+import Inventory_New from "./pages/Akidu_pages/new/Product_New";
 
 // Profit_loss analysis_magagement
 import P_L_List from "./pages/JR_pages/JR_page_1";

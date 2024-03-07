@@ -1,10 +1,10 @@
 import "./Product.scss";
 import Sidebar from "../../../components/sidebar/Sidebar";
 import Navbar from "../../../components/navbar/Navbar";
-import Inventory_Table from "../../../components/Product_comp/datatable/ProductTable";
-import Inventory_Charts from "../../../components/Product_comp/Inv_Charts/Inv_char";
+import Inventory_Table from "../../../components/Akidu_comp/datatable/ProductTable";
+import Inventory_Charts from "../../../components/Akidu_comp/Inv_Charts/Inv_char";
 
-import I_CategorTable from "../../../components/Product_comp/datatable/CategorTable";
+import I_CategorTable from "../../../components/Akidu_comp/datatable/CategorTable";
 //notify-
 //import NofitySuc from "../../../components/notify_status/nofity";
 import { ToastContainer, toast } from 'react-toastify';

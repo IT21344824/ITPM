@@ -11,12 +11,21 @@ const Inv_char = () => {
             <div className="datatable">
 
                 <div className="datatableTitle">
-                    ssss
+               <h1>latest Added Item</h1> 
+                    <div className="latest">
+                        latest
+                    </div>
+                   
 
                 </div>
-                {/* <DataGrid
+                <div className="datatableTitle">
+                <h1>IpieChar</h1> 
+                    <div className="IpieChar">
+                        IpieChar
+                    </div>
 
-                /> */}
+                </div>
+
 
             </div>
 

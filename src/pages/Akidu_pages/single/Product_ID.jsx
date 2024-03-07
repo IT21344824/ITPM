@@ -9,7 +9,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { Link, useLocation } from "react-router-dom";
 import Modal from 'react-modal';
 // import 'react-modal/style/modal.css';
-import Cart from '../../../components/Product_comp/update_popup/UpdatePopup'; // pass the page , id to update page
+import Cart from '../../../components/Akidu_comp/update_popup/UpdatePopup'; // pass the page , id to update page
 
 //notify-
 //import NofitySuc from "../../../components/notify_status/nofity";
