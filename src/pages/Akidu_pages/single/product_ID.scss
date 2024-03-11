@@ -133,52 +133,6 @@
                     border-radius: 22px;
 
 
-                 
-
-
-                    //--
-                    // &::before {
-                    //     content: '';
-                    //     position: absolute;
-                    //     top: 36%;
-                    //     left: -10%;
-                    //     width: 700px;
-                    //     height: 120px;                        
-                    //     background: linear-gradient(0deg, transparent, transparent, #ff7a45, #ff7a45, #ff7a45);
-                    //     z-index: 1;
-                    //     transform-origin: bottom right;
-                    //     animation: animate 10s linear infinite;
-
-                    // }
-                    // &::after {
-                    //     content: '';
-                    //     position: absolute;
-                    //     top: 36%;
-                    //     left: -10%;
-                    //     width: 700px;
-                    //     height: 120px;                        
-                    //     background: linear-gradient(0deg, transparent, transparent, #ff7a45, #ff7a45, #ff7a45);
-                    //     z-index: 1;
-                    //     transform-origin: bottom right;
-                    //     animation: animate 10s linear infinite;
-                    //     animation-delay: -5s;
-
-                    // }
-
-
-
-                    // @keyframes animate {
-                    //     0% {
-                    //         transform: rotate(0deg);
-                    //     }
-
-                    //     100% {
-                    //         transform: rotate(360deg);
-                    //     }
-
-                    // }
-
-
 
                     .p_details {
                         margin: 4px;
@@ -256,6 +210,17 @@
                             .p_inputbox {
                                 position: relative;
                                 margin: 20px;
+
+                                .preHint {
+                                    position: absolute;
+                                    top: -10%; // Adjust as needed for vertical alignment
+                                    right: 1vw; // Adjust as needed for horizontal alignment
+                                    transform: translateY(-50%); // Center vertically
+                                    font-style: italic;
+                                    color: rgb(0, 30, 255);
+                                    // Add more styling as needed
+                                }
+                                
 
                                 .p_new_hint {
                                     margin-left: 20px;

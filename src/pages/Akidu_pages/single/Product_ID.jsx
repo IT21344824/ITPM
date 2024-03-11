@@ -20,7 +20,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Product_ID = ({ id }) => {
 
-    //nofify start------
+    //------------------------------------------nofify start------------------------------------------------
     const notifyStyle = {
         whiteSpace: 'pre-line'
     }
@@ -28,22 +28,18 @@ const Product_ID = ({ id }) => {
         background: 'linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)'
     }
 
+    //------------------------------------------nofify end---------------------------------------------------------------
+
     //-------error massage------
     const [ShowHint, setShowHint] = useState(false);
-
-
-
-    //nofify end--
 
     //geting id from http
     const location = useLocation();
     const _id = location.state.id;
 
 
-    //geting selected data
+    ////------------------------------------------geting selected data//------------------------------------------
     const [data, setData] = useState({});
-
-
     const [itemTypeData, setItemTypeData] = useState({});
 
     const getItemTypeData = async (item_type_ref) => {
@@ -64,7 +60,6 @@ const Product_ID = ({ id }) => {
             return "";
         }
     };
-
 
     useEffect(() => {
         const docRef = doc(db, "Inventory", _id);
@@ -97,9 +92,8 @@ const Product_ID = ({ id }) => {
         return () => unsubscribe();
     }, [_id]);
 
+    ////------------------------------------------geting selected data end------------------------------------------
 
-
-    //----------------------------------------
 
     //pre image soom
     const [selectedImg, setSelectedImg] = useState(null);
@@ -175,7 +169,6 @@ const Product_ID = ({ id }) => {
         qty: "",
         description: "",
         item_type: null,
-        status: "",
         img: [], // add imgs to formData to store multiple image urls
     };
 
@@ -221,65 +214,69 @@ const Product_ID = ({ id }) => {
         });
     };
 
-    //save updates
+    //------------------------------------save updates------------------------------------
     const handleSaveChanges = async (event) => {
         event.preventDefault();
-
-        let hasError = false;
-
-        if (isNaN(UpdateData.price)) {
-            // alert("Please enter a number for the item price ");
-            setShowHint(true);
-            hasError = true;
-            toast.warn('Please a number for the item price!', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
-            return;
-        }
-        if (isNaN(UpdateData.qty)) {
-            //alert("Please enter a number for the quantity");
-            setShowHint(true);
-            hasError = true;
-            toast.warn('Please enter a number for the quantity!', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
-            return;
-        }
-
-        if (hasError) {
-            return;
-        }
 
         try {
             const categoryRef = doc(collection(db, "Inventory"), _id);
 
-            // retrieve the current value of the img array
             const docSnap = await getDoc(categoryRef);
             const currentImgArray = docSnap?.data()?.img || [];
 
-            // add the new image URL to the end of the array
+            // Get the current price and qty
+            const currentPrice = parseFloat(docSnap?.data()?.price || 0);
+            const currentQty = parseFloat(docSnap?.data()?.qty || 0);
+            const currentDefects = parseFloat(docSnap?.data()?.defects || 0);
+
+            let updatedTotal = data.Total;
+            let updatedLRevenue = data.L_Revenue;
+
+            if (UpdateData.price !== "" && UpdateData.qty !== "") {
+                // Both price and qty are updated
+                const newPrice = parseFloat(UpdateData.price);
+                const newQty = parseFloat(UpdateData.qty);
+
+                updatedTotal = newPrice * newQty;
+                updatedLRevenue = newPrice * parseFloat(UpdateData.defects);
+            } else if (UpdateData.price !== "" && UpdateData.qty === "") {
+                // Only price is updated
+                const newPrice = parseFloat(UpdateData.price);
+
+                updatedTotal = newPrice * currentQty;
+                updatedLRevenue = newPrice * parseFloat(UpdateData.defects);
+            } else if (UpdateData.price === "" && UpdateData.qty !== "") {
+                // Only qty is updated
+                const newQty = parseFloat(UpdateData.qty);
+
+                updatedTotal = currentPrice * newQty;
+                updatedLRevenue = currentPrice * parseFloat(UpdateData.defects);
+            }
+
+            // Calculate L_Revenue if defects are updated
+            if (UpdateData.defects !== "" && UpdateData.defects !== undefined) {
+                const newDefects = parseFloat(UpdateData.defects);
+                updatedLRevenue = currentPrice * newDefects;
+            }
+
+            // Recalculate L_Revenue if price is updated
+            if (UpdateData.price !== "" && UpdateData.price !== undefined) {
+                const newPrice = parseFloat(UpdateData.price);
+                updatedLRevenue = newPrice * currentDefects;
+            }
+            // Add the new image URL to the end of the array
             const newImgArray = files[0] ? [...currentImgArray, await uploadFile(files[0])] : currentImgArray;
 
-            // update the img array with the new value
+            // Update the data with the new Total, L_Revenue, and other fields
             const NewupdateData = {
                 ...UpdateData,
                 timeStamp: serverTimestamp(),
                 img: newImgArray,
+                Total: isNaN(updatedTotal) ? 0 : updatedTotal,
+                L_Revenue: isNaN(updatedLRevenue) ? 0 : updatedLRevenue,
             };
 
-            // don't update any fields with empty strings
+            // Don't update any fields with empty strings
             const cleanData = {};
             Object.entries(NewupdateData).forEach(([key, value]) => {
                 if (value !== "" && !(key === "item_type" && !value)) {
@@ -297,24 +294,20 @@ const Product_ID = ({ id }) => {
             // Update the category document with only non-empty fields
             await updateDoc(categoryRef, cleanData);
 
-            //notify
+            // Notify
             toast.success(`Successfully updated \n`);
 
             setIsEditing(false);
             setUpdateData(initialUpdateData);
             setFiles([]);
-            // setSelectedIndex(0);
         } catch (error) {
             console.error("Error updating document: ", error);
         }
     };
 
-
     //image upload
     const [files, setFiles] = useState([]);
     const [per, setPer] = useState(null);
-
-
 
     //delete selected img
     const handleDelete = async (index) => {
@@ -353,9 +346,9 @@ const Product_ID = ({ id }) => {
                 <div className="top">
                     <div className="top_pre">
                         <div className="pre_title">
-                            <h1>Product Details</h1>
+                            <h1>Item Details</h1>
                             {/* <Link to={`/products/OBO/${_id}`} >xxx</Link> */}
-                            <button onClick={() => handleOpen(_id)}>Edit All</button>
+                            {/* <button onClick={() => handleOpen(_id)}>Edit All</button> */}
 
                         </div>
                         <div className="pre_Img">
@@ -449,10 +442,13 @@ const Product_ID = ({ id }) => {
 
                                         {isEditing ? (
                                             <div>
+                                                <div className="preHint">
+                                                    {data?.Product_id ?? ''} </div>
                                                 <input
                                                     className="In_txt"
                                                     type="text"
                                                     name="Product_id"
+                                                   // placeholder={data?.Product_id ?? ''}
                                                     value={UpdateData.Product_id}
                                                     onChange={handleUpdateInputChange}
                                                 />
@@ -467,6 +463,8 @@ const Product_ID = ({ id }) => {
                                     <div className="p_inputbox">
                                         {isEditing ? (
                                             <div>
+                                                <div className="preHint">
+                                                    {data?.item_name ?? ''} </div>
                                                 <input
                                                     className="In_txt"
                                                     type="text"
@@ -485,6 +483,8 @@ const Product_ID = ({ id }) => {
                                     <div className="p_inputbox">
                                         {isEditing ? (
                                             <div>
+                                                <div className="preHint">
+                                                    {data?.price ?? ''} </div>
                                                 <input
                                                     className="In_txt"
                                                     type="text"
@@ -507,6 +507,8 @@ const Product_ID = ({ id }) => {
                                     <div className="p_inputbox">
                                         {isEditing ? (
                                             <div>
+                                                <div className="preHint">
+                                                    {data?.qty ?? ''} </div>
                                                 <input
                                                     className="In_txt"
                                                     type="text"
@@ -530,6 +532,8 @@ const Product_ID = ({ id }) => {
                                     <div className="p_inputbox">
                                         {isEditing ? (
                                             <div>
+                                                <div className="preHint">
+                                                    {itemTypeData?.categoryDoc ?? ''} </div>
                                                 <select id="category" name="category" onChange={handleCategoryChange} >
                                                     <option value=""> </option>
                                                     {catdata.map((item) => (
@@ -555,6 +559,8 @@ const Product_ID = ({ id }) => {
                                     <div className="p_inputbox">
                                         {isEditing ? (
                                             <div>
+                                                <div className="preHint">
+                                                    {data?.defects ?? ''} </div>
                                                 <input
                                                     className="In_txt"
                                                     type="text"
