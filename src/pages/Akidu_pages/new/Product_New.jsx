@@ -20,7 +20,7 @@ const Product_New = ({ userId }) => {
     const [total, setTotal] = useState(0); // New variable total
     const [defects, setDefects] = useState(0); // New variable defects
 
-   // console.log("total",total);
+    // console.log("total",total);
 
     //nofify--
     const notifyStyle = {
@@ -47,8 +47,8 @@ const Product_New = ({ userId }) => {
 
         Product_id: "",
         item_name: "",
-        price: "",
-        qty: "",
+        price: 0,
+        qty: 0,
         description: "",
         item_type: null,
         //item_type: "",
@@ -63,7 +63,7 @@ const Product_New = ({ userId }) => {
     useEffect(() => {
         const uploadFile = async () => {
             for (const file of files) {
-                const name = new Date().getTime() + file.name;
+                const name = `Inventory/${new Date().getTime()}_${file.name}`; // Adjust the storage path here
                 console.log(name);
                 const storageRef = ref(storage, name);
                 const uploadTask = uploadBytesResumable(storageRef, file);
@@ -75,7 +75,7 @@ const Product_New = ({ userId }) => {
                             const progress =
                                 (snapshot.bytesTransferred / snapshot.totalBytes) *
                                 100;
-                            console.log("Upload is " + progress + "% done");
+                            console.log("Images Upload is " + progress + "% done");
                             setPer(progress);
                         },
                         (error) => {
@@ -104,11 +104,6 @@ const Product_New = ({ userId }) => {
     }, [files])
     //---------------------------Products-----------------------------------------------
 
-    // const handleInputChange = (event) => {
-    //     setShowHint(false);
-    //     const { name, value } = event.target;
-    //     setFormData({ ...formData, [name]: value });
-    // };
 
     const handleInputChange = (event) => {
         setShowHint(false);
@@ -135,6 +130,9 @@ const Product_New = ({ userId }) => {
         event.preventDefault();
 
         let hasError = false;
+        // Convert price and qty to numbers
+        const parsedPrice = parseFloat(formData.price);
+        const parsedQty = parseFloat(formData.qty);
 
         if (!formData.Product_id) {
             //alert("Please enter the Product_id");
@@ -168,11 +166,9 @@ const Product_New = ({ userId }) => {
             return;
         }
 
-        if (!formData.price || isNaN(formData.price)) {
-            // alert("Please enter a number for the item price ");
-            setShowHint(true);
-            hasError = true;
-            toast.warn('Please a number for the item price!', {
+        // Check if price and qty are valid numbers
+        if (isNaN(parsedPrice) || isNaN(parsedQty)) {
+            toast.error('Please enter valid numbers for price and quantity!', {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -183,21 +179,7 @@ const Product_New = ({ userId }) => {
             });
             return;
         }
-        if (!formData.qty || isNaN(formData.qty)) {
-            //alert("Please enter a number for the quantity");
-            setShowHint(true);
-            hasError = true;
-            toast.warn('Please enter a number for the quantity!', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
-            return;
-        }
+
         if (!formData.item_type) {
 
             setShowHint(true);
@@ -257,12 +239,6 @@ const Product_New = ({ userId }) => {
         // Initialize formData.img as an empty array if it is null
         const images = formData.img ? formData.img : [];
 
-        // // Calculate total
-        // const price = parseFloat(formData.price);
-        // const qty = parseFloat(formData.qty);
-        // const total = price * qty;
-        // const defects = 0 ;
-
         try {
             const productsRef = collection(db, "Inventory");
 
@@ -289,36 +265,40 @@ const Product_New = ({ userId }) => {
             }
 
             // Upload each file in the files array
-            for (const file of files) {
-                const storageRef = ref(storage, file.name);
-                const uploadTask = uploadBytesResumable(storageRef, file);
+            // for (const file of files) {
+            //     const storageRef = ref(storage, file.name);
+            //     const uploadTask = uploadBytesResumable(storageRef, file);
 
-                uploadTask.on(
-                    "state_changed",
-                    (snapshot) => {
-                        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                        console.log("Upload is " + progress + "% done");
-                        setPer(progress);
-                    },
-                    (error) => {
-                        console.log(error);
-                    },
-                    () => {
-                        // Get the download URL and add it to the images array
-                        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                            images.push(downloadURL);
-                            setFormData((prev) => ({ ...prev, img: images }));
-                        });
-                    }
-                );
-            }
+            //     uploadTask.on(
+            //         "state_changed",
+            //         (snapshot) => {
+            //             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            //             console.log("IMG array Upload is " + progress + "% done");
+            //             setPer(progress);
+            //         },
+            //         (error) => {
+            //             console.log(error);
+            //         },
+            //         () => {
+            //             // Get the download URL and add it to the images array
+            //             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            //                 images.push(downloadURL);
+            //                 setFormData((prev) => ({ ...prev, img: images }));
+            //             });
+            //         }
+            //     );
+            // }
 
             // Add the product data to the database
             const newProductRef = await addDoc(collection(db, "Inventory"), {
                 ...formData,
                 user_id: userId, // Save userId as user_id in the database
-                defects: 0 ,
-                Total : total,
+                defects: 0,
+                price: parsedPrice,
+                qty: parsedQty,
+                L_Revenue: 0,
+                Total: total,
+
                 timeStamp: serverTimestamp(),
             });
             console.log("Document written with ID: ", newProductRef.id);
@@ -504,6 +484,7 @@ const Product_New = ({ userId }) => {
                                         setFiles([]);
                                         setSelectedIndex(0); // assuming you have a setSelectedIndex function to set the index of the selected image
                                         setSelectedImage(null); // set the selectedImage to null
+                                        console.log("Image deleted ");
                                         // togglePopdown();
                                     }} className="clear_img"> clear </button>
                                 </div>
@@ -555,11 +536,13 @@ const Product_New = ({ userId }) => {
                             <div className="formInput">
                                 <label>Price (RS) :</label>
                                 <input
-                                    type="text"
+                                    type="number"
                                     name="price"
                                     value={formData.price}
                                     onChange={handleInputChange}
                                     placeholder="Enter Product Price...."
+                                    min="0"  // Set minimum value to 0 or adjust as needed
+                                    step="0.01"  // Set step value if decimal inputs are allowed
                                     className={ShowHint && (!formData.price || isNaN(formData.price)) ? 'error' : ''}
                                 />
                                 {ShowHint && (!formData.price || isNaN(formData.price)) && (
@@ -572,10 +555,11 @@ const Product_New = ({ userId }) => {
                             <div className="formInput">
                                 <label>Quantity :</label>
                                 <input
-                                    type="text"
+                                    type="number"
                                     name="qty"
                                     value={formData.qty}
                                     onChange={handleInputChange}
+                                    min="0"  // Set minimum value to 0 or adjust as needed
                                     placeholder="Enter Product Quantity...."
                                     className={ShowHint && (!formData.qty || isNaN(formData.qty)) ? 'error' : ''}
                                 />

@@ -11,10 +11,11 @@ import CatUpdate from '../category_update/CatUpdate'; // pass the page , id to u
 //import NofitySuc from "../../../components/notify_status/nofity";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { storage } from "../../../firebase";
 
 //delete
 import { onConfirm } from 'react-confirm-pro';
-
+import { ref, deleteObject, getStorage } from "firebase/storage";
 //--
 
 
@@ -106,8 +107,8 @@ const ProductTable = ({ id }) => {
     },
     { field: "qty", headerName: "Quantity", width: 110 },
     { field: "price", headerName: "Price", width: 110 },
-   
-    { field: "Total", headerName: "Total", width: 150 },
+
+    { field: "defects", headerName: "Defects / Damaged", width: 160 },
 
   ];
 
@@ -211,7 +212,6 @@ const ProductTable = ({ id }) => {
     })
 
   };
-
   //table action header /function
   const actionColum = [
     {
@@ -224,8 +224,7 @@ const ProductTable = ({ id }) => {
             <Link to={`/Inventory/${params.row.id}`} style={{ textDecoration: "none" }} state={{ id: params.row.id }}>
               <div className="viewButton"> View </div>
             </Link>
-            <div className="deleteButton" onClick={() => handleDelete(params.row.id)}  > Delete </div>
-          </div>
+            <div className="deleteButton" onClick={() => handleDelete(params.row.id, params.row.imageName)}> Delete </div>          </div>
         );
       },
     }
@@ -275,7 +274,7 @@ const ProductTable = ({ id }) => {
 
       </div>
 
-    
+
     </div>
   )
 }

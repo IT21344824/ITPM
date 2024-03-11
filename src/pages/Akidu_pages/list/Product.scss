@@ -4,10 +4,25 @@
 
     .listContainer{
         flex: 6;
-        
-        .CategorTable{
 
+        .optimazer {
+            display: flex;
+            justify-content: space-between; /* Add this line */
+            align-items: center;
+            width: 100%; /* Add this line */
+            
+            /* Adjust widths for the child elements */
+            > * {
+                flex: 1;
+                margin: 0 5px; /* Add spacing between the two containers */
+            }
+
+        }
+
+        .CategorTable{
             margin-top: 100px;
         }
+
+       
     }
 }

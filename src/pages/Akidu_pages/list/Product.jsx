@@ -1,8 +1,10 @@
 import "./Product.scss";
 import Sidebar from "../../../components/sidebar/Sidebar";
 import Navbar from "../../../components/navbar/Navbar";
+
 import Inventory_Table from "../../../components/Akidu_comp/datatable/ProductTable";
 import Inventory_Charts from "../../../components/Akidu_comp/Inv_Charts/Inv_char";
+import Inventory_Latest from "../../../components/Akidu_comp/latest_added/Latest_Products";
 
 import I_CategorTable from "../../../components/Akidu_comp/datatable/CategorTable";
 //notify-
@@ -28,13 +30,13 @@ const List = ({ userId }) => {
       <Sidebar />
       <div className="listContainer">
         <Navbar />
-        <Inventory_Charts />
-        <Inventory_Table />
-
-        <div className="CategorTable">
-          <I_CategorTable />
-        </div>
         
+        <div className="optimazer"> <Inventory_Charts /> <Inventory_Latest /> </div>
+
+        <div className="div"> <Inventory_Table /></div>
+
+        <div className="CategorTable"><I_CategorTable /></div>
+
       </div>
 
       <ToastContainer

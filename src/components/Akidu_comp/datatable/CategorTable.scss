@@ -14,27 +14,14 @@
                 padding: 2px 5px;
                 border-radius: 5px;
                 color: darkblue;
+                background-color: rgba(255, 242, 0, 0.247);
+
                 border: 1px dotted rgba(0, 0, 139, 0.579);
                 cursor: pointer;
 
             }
 
-            .viewButton {
-                padding: 2px 5px;
-                border-radius: 5px;
-                color: darkblue;
-                border: 1px dotted rgba(0, 0, 139, 0.579);
-                cursor: pointer;
-
-                &:hover {
-                    transform: scale(1.1);
-                }
-
-                &:active {
-                    transform: scale(0.90);
-                }
-
-            }
+            
 
             .deleteButton {
                 padding: 2px 5px;

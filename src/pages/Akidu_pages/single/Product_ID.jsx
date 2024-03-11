@@ -67,7 +67,7 @@ const Product_ID = ({ id }) => {
 
 
     useEffect(() => {
-        const docRef = doc(db, "products", _id);
+        const docRef = doc(db, "Inventory", _id);
 
         const unsubscribe = onSnapshot(docRef, async (doc) => {
             if (doc.exists()) {
@@ -131,7 +131,7 @@ const Product_ID = ({ id }) => {
     //featch category--start
     const fetchData = () => {
         const unsub = onSnapshot(
-            collection(db, "Product_Category"),
+            collection(db, "Inventory_Category"),
             (snapshot) => {
                 let list = [];
                 snapshot.docs.forEach((doc) => {
@@ -157,7 +157,7 @@ const Product_ID = ({ id }) => {
     //featch category--end---------- 
     const handleCategoryChange = (event) => {
         const selectedOption = catdata.find((item) => item.Cat_name === event.target.value);
-        const item_type_ref = selectedOption ? doc(db, "Product_Category", selectedOption.id) : UpdateData.item_type;
+        const item_type_ref = selectedOption ? doc(db, "Inventory_Category", selectedOption.id) : UpdateData.item_type;
         setUpdateData({ ...UpdateData, item_type: item_type_ref });
         console.log(item_type_ref);
     };
@@ -263,7 +263,7 @@ const Product_ID = ({ id }) => {
         }
 
         try {
-            const categoryRef = doc(collection(db, "products"), _id);
+            const categoryRef = doc(collection(db, "Inventory"), _id);
 
             // retrieve the current value of the img array
             const docSnap = await getDoc(categoryRef);
@@ -322,7 +322,7 @@ const Product_ID = ({ id }) => {
         if (confirmDelete) {
             try {
                 console.log(index)
-                const categoryRef = doc(collection(db, "products"), _id);
+                const categoryRef = doc(collection(db, "Inventory"), _id);
 
                 // retrieve the current value of the img array
                 const docSnap = await getDoc(categoryRef);
@@ -341,7 +341,7 @@ const Product_ID = ({ id }) => {
             }
         }
     };
-    
+
     //---------------------------------------------------------------------------one By one | end--------------------------------------------------
 
 
@@ -409,7 +409,7 @@ const Product_ID = ({ id }) => {
                                         Only enter what need to change
                                     </div>
                                 ) : ''}
-                                
+
                                 <div className="buttons">
                                     {isEditing ? (
                                         <>
@@ -548,33 +548,36 @@ const Product_ID = ({ id }) => {
                                     </div>
 
                                     <div className="p_inputbox">
+                                        <p>{data?.Total ?? ''}</p>
+                                        <span> Total </span>
+                                    </div>
+
+                                    <div className="p_inputbox">
                                         {isEditing ? (
-                                            <div className="In_radio">
-                                                <label>
-                                                    <input
-                                                        type="radio"
-                                                        name="status"
-                                                        value="out-of-stock"
-                                                        checked={UpdateData.status === "out-of-stock"}
-                                                        onChange={handleUpdateInputChange}
-                                                    />
-                                                    Out of stock
-                                                </label>
-                                                <label>
-                                                    <input
-                                                        type="radio"
-                                                        name="status"
-                                                        value="in-stock"
-                                                        checked={UpdateData.status === "in-stock"}
-                                                        onChange={handleUpdateInputChange}
-                                                    />
-                                                    In stock
-                                                </label>
+                                            <div>
+                                                <input
+                                                    className="In_txt"
+                                                    type="text"
+                                                    name="defects"
+                                                    value={UpdateData.defects}
+                                                    onChange={handleUpdateInputChange}
+                                                />
+                                                {ShowHint && isNaN(UpdateData.defects) && (
+                                                    <div className="p_new_hint" >
+                                                        Please enter a number for Quantity !
+                                                    </div>
+                                                )}
+
                                             </div>
                                         ) : (
-                                            <p>{data?.status ?? ''}</p>
+                                            <p>{data?.defects ?? ''}</p>
                                         )}
-                                        <span>status</span>
+                                        <span> defects / damaged items </span>
+                                    </div>
+
+                                    <div className="p_inputbox">
+                                        <p>{data?.L_Revenue ?? ''}</p>
+                                        <span> Lost Revenue </span>
                                     </div>
 
 
