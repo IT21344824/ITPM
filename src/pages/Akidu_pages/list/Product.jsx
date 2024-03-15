@@ -31,11 +31,11 @@ const List = ({ userId }) => {
       <div className="listContainer">
         <Navbar />
         
-        <div className="optimazer"> <Inventory_Charts /> <Inventory_Latest /> </div>
+        <div className="optimazer"> <Inventory_Charts userId={userId} /> <Inventory_Latest userId={userId} /> </div>
 
-        <div className="div"> <Inventory_Table /></div>
+        <div className="div"> <Inventory_Table userId={userId} /></div>
 
-        <div className="CategorTable"><I_CategorTable /></div>
+        <div className="CategorTable"><I_CategorTable userId={userId} /></div>
 
       </div>
 

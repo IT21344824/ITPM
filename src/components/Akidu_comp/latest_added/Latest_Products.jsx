@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react';
 import { db } from '../../../firebase';
 
 
-const Latest_Products = () => {
+const Latest_Products = ({ userId }) => {
 
   const [newproducts, setNewProducts] = useState([])
 
@@ -23,8 +23,9 @@ const Latest_Products = () => {
       const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
       const prevMonthQuery = query(
         collection(db, 'Inventory'),
+        where('user_id', '==', userId), // Filter by user_id
         where('timeStamp', '>', prevMonth),
-        orderBy('timeStamp', 'desc'), // sort by timestamp in descending order
+        orderBy('timeStamp', 'desc'),  // sort by timestamp in descending order
         // limit(3) // limit to only the latest 3 products
       );
 
@@ -55,6 +56,9 @@ const Latest_Products = () => {
 
     fetchData();
   }, []);
+
+
+  console.log(newproducts);
 
   //table headers
   const columns = [
@@ -110,7 +114,7 @@ const Latest_Products = () => {
           className="datagrid"
           rows={newproducts.map((row, index) => ({ ...row, Row_id: index + 1 }))}
           columns={columns.concat(actionColum)}
-          pageSize={3}   // pageSize or rowsPerPageOptions 2ken ekai puluwan
+          pageSize={6}   // pageSize or rowsPerPageOptions 2ken ekai puluwan
           //rowsPerPageOptions={[3,5,10]}
           checkboxSelection
           getRowId={(row) => row.id}

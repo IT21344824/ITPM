@@ -16,7 +16,7 @@ import { onConfirm } from 'react-confirm-pro';
 //--
 
 
-const CategorTable = ({ id, Cat_name }) => {
+const CategorTable = ({ id, Cat_name , userId}) => {
 
     //nofify--
     const notifyStyle = {
@@ -49,20 +49,26 @@ const CategorTable = ({ id, Cat_name }) => {
     // show all Category data
     useEffect(() => {
         const unsub = onSnapshot(
-            collection(db, "Inventory_Category"),
+            query(
+                collection(db, "Inventory_Category"),
+                where("user_id", "==", userId)
+            ),
             (snapshot) => {
                 let list = []
                 snapshot.docs.forEach(doc => {
                     list.push({ id: doc.id, ...doc.data() })
                 });
                 setCat_Data(list);
-            }, (error) => {
+            }, 
+            (error) => {
                 console.log(error);
-            });
+            }
+        );
         return () => {
             unsub();
-        }
-    }, []);
+        };
+    }, [userId]);
+    
 
     //search Category by name / id
     const filtered_Category_Data = Cat_data.filter((Cat_row) =>
@@ -213,6 +219,7 @@ const CategorTable = ({ id, Cat_name }) => {
             // Add the product data to the database
             const newProductRef = await addDoc(collection(db, "Inventory_Category"), {
                 ...formData,
+                user_id: userId,
                 timeStamp: serverTimestamp(),
             });
             console.log("Document written with ID: ", newProductRef.id);

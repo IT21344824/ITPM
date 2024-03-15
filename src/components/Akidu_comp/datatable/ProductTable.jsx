@@ -4,7 +4,7 @@ import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 // import { userColums, userRows } from "../../../datatablesource";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { collection, getDoc, getDocs, addDoc, deleteDoc, doc, onSnapshot, serverTimestamp } from "firebase/firestore";
+import { collection, getDoc, getDocs, addDoc, deleteDoc, doc, onSnapshot, serverTimestamp , query , where } from "firebase/firestore";
 import { db } from "../../../firebase";
 import CatUpdate from '../category_update/CatUpdate'; // pass the page , id to update page
 //notify-
@@ -19,7 +19,7 @@ import { ref, deleteObject, getStorage } from "firebase/storage";
 //--
 
 
-const ProductTable = ({ id }) => {
+const ProductTable = ({ id , userId  }) => {
   //nofify--
   const notifyStyle = {
     whiteSpace: 'pre-line'
@@ -117,7 +117,10 @@ const ProductTable = ({ id }) => {
 
   useEffect(() => {
     const unsub = onSnapshot(
-      collection(db, "Inventory"),
+      query(
+        collection(db, "Inventory"),
+        where("user_id", "==", userId)
+      ),
       (snapshot) => {
         let list = []
         snapshot.docs.forEach(doc => {
@@ -130,7 +133,8 @@ const ProductTable = ({ id }) => {
     return () => {
       unsub();
     }
-  }, []);
+  }, [userId]);
+  // console.log(userId);
 
 
   //table delete data function

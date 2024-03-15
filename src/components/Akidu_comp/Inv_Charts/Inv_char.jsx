@@ -4,14 +4,15 @@ import { collection, getDocs, getDoc, addDoc, serverTimestamp, query, where, onS
 import { db } from "../../../firebase";
 import Chart from 'react-apexcharts';
 
-const Inv_char = () => {
+const Inv_char = ({ userId }) => {
     const [allcatdata, setAllCatData] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const inventorySnapshot = await getDocs(collection(db, "Inventory"));
-                const inventoryCategorySnapshot = await getDocs(collection(db, "Inventory_Category"));
+                const inventorySnapshot = await getDocs(query(collection(db, "Inventory"), where("user_id", "==", userId)));
+                const inventoryCategorySnapshot = await getDocs(query(collection(db, "Inventory_Category"), where("user_id", "==", userId)));
+
 
                 let itemCounts = {};
 
@@ -55,19 +56,24 @@ const Inv_char = () => {
                 <div className="datatableTitle">
                     <h1><span> Categories </span></h1>
                     <div className="IpieChar">
-                        <Chart
-                            type='donut'
-                            height='100%'
-                            series={allcatdata.map(item => item.count)}
-                            options={{
-                                labels: allcatdata.map(item => item.Cat_name),
-                                chart: {
-                                    height: '100%',
-                                    width: '100%'
-                                }
-                            }}
-                        />
+                        {allcatdata.length > 0 ? (
+                            <Chart
+                                type='donut'
+                                height='100%'
+                                series={allcatdata.map(item => item.count)}
+                                options={{
+                                    labels: allcatdata.map(item => item.Cat_name),
+                                    chart: {
+                                        height: '100%',
+                                        width: '100%'
+                                    }
+                                }}
+                            />
+                        ) : (
+                            <p>No category</p>
+                        )}
                     </div>
+
                 </div>
             </div>
         </div>
