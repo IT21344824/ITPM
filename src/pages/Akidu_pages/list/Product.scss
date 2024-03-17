@@ -1,28 +1,37 @@
-.Prodcutslist{
+.Prodcutslist {
     display: flex;
     width: 100%;
 
-    .listContainer{
+    .listContainer {
         flex: 6;
 
         .optimazer {
             display: flex;
-            justify-content: space-between; /* Add this line */
+            justify-content: space-between;
+            /* Add this line */
             align-items: center;
-            width: 100%; /* Add this line */
-            
+            width: 100%;
+            /* Add this line */
+
             /* Adjust widths for the child elements */
-            > * {
+            >* {
                 flex: 1;
-                margin: 0 5px; /* Add spacing between the two containers */
+                margin: 0 5px;
+                /* Add spacing between the two containers */
             }
 
         }
 
-        .CategorTable{
+        .widgets {
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .CategorTable {
             margin-top: 100px;
         }
 
-       
+
     }
 }
