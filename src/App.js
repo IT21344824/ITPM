@@ -36,6 +36,9 @@ import ForecastList from "./pages/Avishka_pages/Avishka_pages";
 // promotional_magagement
 import PromotionalList from "./pages/Najas_pages/Najas_pages";
 
+// ChatBot_magagement
+import ChatBot from "./pages/ChatBot/ChatBot";
+
 
 
 
@@ -102,6 +105,14 @@ function App() {
               <Route index element={<RequireAuth> <PromotionalList userId={currentUser ? currentUser.uid : null} /> </RequireAuth>} />
             </Route>
             {/* --------------------------------------------Promo end -------------------------------------------------*/}
+
+
+
+            {/* --------------------------------------------ChatBot start -------------------------------------------------*/}
+            <Route path="ChatBot" >
+              <Route index element={<RequireAuth> <ChatBot userId={currentUser ? currentUser.uid : null} /> </RequireAuth>} />
+            </Route>
+            {/* --------------------------------------------ChatBot end -------------------------------------------------*/}
 
 
 

@@ -2,8 +2,10 @@
     display: flex;
     //background-color: aqua;
     width: 100%;
-    .sec{
+
+    .sec {
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         flex: 1;
         padding: 10px;
@@ -13,18 +15,12 @@
         border-radius: 10px;
         height: 110px;
         margin: 30px;
-    
-        .right {
-            margin-left: -5px;
-        }
-    
-        .left,
-        .right {
+       
+
+        .row1 {
             display: flex;
-            flex-direction: column;
             justify-content: space-between;
-    
-    
+            
             .title {
                 gap: 20px;
                 align-items: center;
@@ -33,12 +29,12 @@
                 font-weight: bold;
                 font-size: 14px;
                 color: gray;
-    
+
                 .DUrl {
                     align-items: center;
                     justify-content: center;
                     display: flex;
-    
+
                     button {
                         background: transparent;
                         border: none;
@@ -46,105 +42,58 @@
                     }
                 }
             }
-    
-            .counter {
-    
-                font-size: 28px;
-                font-weight: 300;
-    
-                .sub {
-                    font-size: 12px;
-                    font-weight: 300;
-    
-    
-                    .th {
-                        justify-content: space-between;
-                        display: flex;
-    
-                        // background-color: aqua;
-    
-                        .sub_title1 {
-                            margin-left: 5px;
-                            margin-right: 15px;
-                            font-size: 16px;
-                            font-weight: 200;
-                            color: rgb(169, 121, 121);
-                        }
-    
-                        .sub_title2 {
-    
-                            margin-left: 15px;
-                            font-size: 16px;
-                            font-weight: 200;
-                            color: rgb(169, 121, 121);
-                        }
-                    }
-    
-    
-                    .tr {
-                        margin-top: 6px;
-                        justify-content: space-between;
-                        display: flex;
-    
-                        .sub_amount_1 {
-                            margin-left: 20px;
-                            font-size: 24px;
-                            font-weight: 200;
-    
-                        }
-    
-                        .sub_amount_2 {
-                            margin-left: 20px;
-                            font-size: 24px;
-                            font-weight: 200;
-                            margin-right: 10px;
-                        }
-                    }
-    
-                }
-            }
-    
-            .link {
-    
-                font-size: 14px;
-                color: rgb(170, 0, 255);
-                // border-bottom: 1px solid gray;
-    
-                &:hover {
-                    color: red;
-                }
-    
-            }
-    
-    
+
             .percentage {
                 display: flex;
                 align-items: center;
                 font-size: 14px;
-    
+
                 &.positive {
                     color: green;
                 }
-    
+
                 &.negative {
                     color: red;
                 }
-    
-    
-    
+
+
+
             }
-    
+           
+        }
+
+        .row2{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .counter {
+
+                font-size: 28px;
+                font-weight: 600;
+                display: flex;
+               // background-color: aqua;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        .row3{
+            display: flex;
+            align-items: end;
+            justify-content: end;
+
             .icon {
                 font-size: 18px;
                 padding: 5px;
                 //background-color: rgb(125, 1, 1);
                 border-radius: 5px;
                 align-self: flex-end;
-    
-    
+
+
             }
         }
     }
-   
+
 
 }

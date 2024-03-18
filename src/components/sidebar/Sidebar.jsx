@@ -119,6 +119,13 @@ const Sidebar = ({ userId }) => {
                         </li>
                     </Link>
 
+                    <Link to="/ChatBot" style={{ textDecoration: "none" }} >
+                        <li onClick={() => handleClickedElement("ChatBot")} className={clickedElement === "ChatBot" ? "selected" : ""}>
+                            <ProductionQuantityLimitsIcon className="iocn" />
+                            <span> ChatBot </span>
+                        </li>
+                    </Link>
+
                     <p className="title"> USEFULL </p>
                     {/* ----------------------------Usefull start ----------------*/}
 
