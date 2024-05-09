@@ -1,0 +1,196 @@
+.Akidu_popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 700px;
+    height: 600px; // Set a fixed height for the popup
+    overflow-y: auto; // Enable vertical scrolling
+
+
+    h1 {
+      margin-bottom: 30px;
+      color: gray;
+      font-weight: 400;
+      font-size: 24px;
+    }
+
+
+    .full_from {
+
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+
+
+        .top {
+          display: flex;
+          flex: 2;
+          justify-content: space-between;
+
+
+          .details_tag {
+            margin-left: 50px;
+          }
+        }
+
+        .mid {
+          text-align: center;
+
+          img {
+            margin: 25px 25px;
+            width: 100px;
+            height: 100px;
+            border-radius: 25%;
+            object-fit: cover;
+            border: 5px solid #777474;
+          }
+        }
+
+        .mid {
+          flex: 1;
+        }
+
+        .bot {
+          flex: 1;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+          gap: 40px;
+
+
+        }
+
+        .buttons {
+          display: flex;
+          justify-content: center;
+          gap: 40px;
+          margin-top: 40px;
+
+          button {
+            width: 150px;
+            padding: 10px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+
+            &:active {
+              transform: scale(0.90);
+            }
+          }
+
+          .reset {
+            background-color: teal;
+            color: white;
+
+          }
+
+          .submit {
+            background-color: orange;
+            color: white;
+          }
+        }
+
+        label {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          .icon {
+            cursor: pointer;
+          }
+        }
+
+        .formInput {
+          width: 40%;
+
+          .p_new_hint {
+            margin-top: 2px;
+            font-size: 13px;
+            color: red;
+          }
+
+          .Item_Type {
+            margin-bottom: 30px;
+          }
+
+          .status {
+            margin-bottom: 10px;
+
+            .line_height {
+              // background-color: aqua;
+              line-height: 30px;
+
+              // if error
+              &.error {
+                border-bottom: 3px solid red;
+              }
+            }
+          }
+
+
+
+          .Description {
+            width: 100%;
+            height: 130px;
+            padding: 5px;
+            border: none;
+            border-bottom: 1px solid gray;
+            resize: none;
+
+            // if error
+            &.error {
+              border-bottom: 3px solid red;
+
+            }
+
+          }
+
+          input,
+          .P_cat {
+            width: 100%;
+            padding: 5px;
+            border: none;
+            border-bottom: 1px solid gray;
+
+            // if error
+            &.error {
+              border-bottom: 3px solid red;
+
+            }
+          }
+
+          input.invalid {
+            border: 2px solid red;
+          }
+
+        }
+      }
+    }
+
+  }
+
+
+
+
+}

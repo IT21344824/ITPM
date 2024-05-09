@@ -1,0 +1,34 @@
+.Employe{
+    display: flex;
+    .con{
+        flex: 6;
+
+        .E_delail{
+          
+            padding: 20px;
+           // display: flex;
+            gap: 20px;
+            margin: auto;
+  
+            .E_container{
+                flex: 1;
+                box-shadow: 10px 11px 23px 0px rgba(0, 0, 0, 0.25);
+                -webkit-box-shadow: 10px 11px 23px 0px rgba(0, 0, 0, 0.25);
+                -moz-box-shadow: 10px 11px 23px 0px rgba(0, 0, 0, 0.25);
+                padding: 50px;
+                margin-top: 30px;
+                border-radius: 10px;
+                position: relative;
+  
+                .U_Img{
+                  img{
+                    width: 200px;
+                    height: 200px;
+                  }
+                }
+            }
+  
+           
+        }
+    }
+}

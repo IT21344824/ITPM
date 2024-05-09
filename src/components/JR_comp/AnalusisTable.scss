@@ -1,0 +1,131 @@
+.AnalusisTable_formContainer {
+
+    .newContainer {
+        position: relative; // Ensure the container is positioned relatively
+
+
+
+        .box {
+            margin: 50px 0 0 5px;
+
+            .datatableTitle {
+                width: 49%;
+                font-size: 24px;
+                color: gray;
+                margin-bottom: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px;
+                box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+                -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+                border-radius: 10px;
+                gap: 20px;
+            }
+
+            .button {
+                font-size: 20px;
+                font-weight: bold;
+                border: none;
+                border-radius: 10px;
+                transition-duration: 0.4s;
+                padding-top: 4px;
+
+                &:hover {
+                    background-color: #04AA6D;
+                    /* Green */
+                    color: white;
+                }
+
+            }
+
+            .search_table {
+                border: 0.5px solid rgb(185, 183, 183);
+                margin-top: 30px;
+                margin-bottom: 10px;
+                padding-bottom: 10px;
+                width: 100%;
+                padding: 10px;
+                box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+                -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+
+                .input {
+
+                    border: none;
+                    outline: none;
+                    background-color: transparent;
+
+                    &::placeholder {
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            .datagrid {
+                min-height: 80vh;
+                width: 100%;
+                padding: 10px;
+                box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+                -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+                border-radius: 10px;
+                margin: 0 30px 30px 0;
+
+            }
+
+            .cellAction {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+
+                .cat_btn {
+                    background-color: transparent;
+                    padding: 2px 5px;
+                    border-radius: 5px;
+                    color: darkblue;
+                    border: 1px dotted rgba(0, 0, 139, 0.579);
+                    cursor: pointer;
+
+                }
+
+                .viewButton {
+                    padding: 2px 5px;
+                    border-radius: 5px;
+                    color: darkblue;
+                    background-color: rgba(255, 242, 0, 0.247);
+                    border: 1px dotted rgba(0, 0, 139, 0.579);
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+
+                    &:active {
+                        transform: scale(0.90);
+                    }
+
+                }
+
+                .deleteButton {
+                    padding: 2px 5px;
+                    border-radius: 5px;
+                    color: crimson;
+                    border: 1px dotted rgba(220, 20, 60, 0.6);
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+
+                    &:active {
+                        transform: scale(0.90);
+                    }
+                }
+            }
+
+
+
+
+
+        }
+    }
+}

@@ -1,0 +1,20 @@
+.Analysis_home_formContainer {
+  display: flex;
+  width: 100%;
+
+  .newContainer {
+      flex: 6;
+
+      .AN_Container {
+          display: flex;
+
+          .AN_Left {
+              flex: 6;
+          }
+
+          .AN_Right {
+              flex: 4;
+          }
+      }
+  }
+}

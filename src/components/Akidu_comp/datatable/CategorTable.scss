@@ -1,0 +1,207 @@
+.Akidu_categories {
+    padding-top: 50px;
+
+    .datatable {
+        margin: 0 20px 0px 20px;
+
+        .cellAction {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            .cat_btn {
+                background-color: transparent;
+                padding: 2px 5px;
+                border-radius: 5px;
+                color: darkblue;
+                background-color: rgba(255, 242, 0, 0.247);
+
+                border: 1px dotted rgba(0, 0, 139, 0.579);
+                cursor: pointer;
+
+            }
+
+            
+
+            .deleteButton {
+                padding: 2px 5px;
+                border-radius: 5px;
+                color: crimson;
+                border: 1px dotted rgba(220, 20, 60, 0.6);
+                cursor: pointer;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+
+                &:active {
+                    transform: scale(0.90);
+                }
+            }
+        }
+
+        .Category_all {
+            display: flex;
+
+            //button pop off --- start--------
+            .cat_btn {
+                &:hover {
+                    transform: scale(1.1);
+                }
+
+                &:active {
+                    transform: scale(0.90);
+                }
+            }
+
+            .deleteButton {
+                &:active {
+                    transform: scale(0.90);
+                }
+            }
+
+            //button pop off --- end--------
+
+            .all {
+                flex: 5;
+
+                .Cat_datagrid {
+                    height: 400px;
+                    //width: 600px;
+                    padding: 10px;
+                    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+                    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+                    border-radius: 10px;
+                    margin: 0 30px 30px 0;
+                }
+                .button {
+                    font-size: 20px;
+                    font-weight: bold;
+                    border: none;
+                    border-radius: 10px;
+                    transition-duration: 0.4s;
+                    padding-top: 4px;
+    
+                    &:hover {
+                        background-color: #04AA6D;
+                        /* Green */
+                        color: white;
+                    }
+    
+                }
+
+                .Category_all_title {
+
+                    padding: 10px;
+                    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+                    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+                    border-radius: 10px;
+                    margin-top: 40px;
+                    width: 40%;
+                    font-size: 24px;
+                    color: rgb(0, 0, 0);
+                    margin-bottom: 10px;
+                    align-items: center;
+                    justify-content: center;
+                    display: flex;
+                    gap: 20px;
+                    font-weight: bold;
+                    background-color: #cacaca;
+                }
+            }
+
+            .add {
+                flex: 4;
+
+
+                .Category_add {
+
+                    padding: 10px;
+                    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+                    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+                    border-radius: 10px;
+                    margin-top: 40px;
+                    width: 40%;
+                    font-size: 24px;
+                    color: rgb(0, 0, 0);
+                    margin-bottom: 10px;
+                    align-items: center;
+                    font-weight: bold;
+                    background-color: #cacaca;
+                    display: flex;
+                    justify-content: center;
+                }
+
+
+
+                .cat_add_from {
+                    flex-wrap: wrap;
+                    // width: 600px;
+                    padding: 10px;
+                    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+                    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+                    border-radius: 10px;
+                    margin: 0 30px 30px 0;
+
+                    form {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 30px;
+                        justify-content: space-around;
+                        margin-top: 30px;
+                        margin-bottom: 25px;
+                        align-items: center;
+
+                        .c_field {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between; 
+                            align-items: center;
+                           
+
+                            .cD_field {
+                                margin-top: 20px;
+                                display: flex;
+                                gap: 30px;
+                                align-items: center;
+                            }
+
+                            textarea {
+                                resize: none;
+                            }
+
+                            label {
+                                font-weight: bold;
+                                margin-right: 20px;
+                            }
+                        }
+
+                        .submit {
+                            display: flex;
+                            width: 70px;
+                            height: 35px;
+                            padding: 10px;
+                            border: none;
+                            background-color: Orange;
+                            color: white;
+                            font-weight: bold;
+                            text-align: center;
+                            justify-content: center;
+                            cursor: pointer;
+
+                            &:hover {
+                                transform: scale(1.05);
+                            }
+
+                            &:active {
+                                transform: scale(0.90);
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

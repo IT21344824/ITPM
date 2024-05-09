@@ -1,0 +1,99 @@
+.Akidu_Prodcutslist {
+    display: flex;
+    width: 100%;
+
+    .listContainer {
+        flex: 6;
+
+        .chart_top {
+
+            display: flex;
+            gap: 20px;
+            //justify-content: space-between; // Ensures equal space between the charts
+
+            /* Adjust width for each chart */
+            >* {
+                flex: 1; // Each chart takes up equal space
+                max-width: calc(50% - 60px); // Adjust as needed and consider margin
+            }
+
+
+            .Title_list {
+                font-size: 24px;
+                color: gray;
+                //margin-bottom: 10px;
+                margin-left: 15px;
+                margin-top: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 5px;
+                padding: 10px;
+                box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+                -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+                border-radius: 10px;
+
+                .link {
+                    font-family: "Roboto", sans-serif;
+                    font-size: 18px;
+                    font-weight: bold;
+                    background: #0d7236;
+                    width: 90px;
+                    padding: 10px;
+                    text-align: center;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    color: #fff;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    border: none;
+                    -webkit-transition-duration: 0.3s;
+                    transition-duration: 0.3s;
+                    -webkit-transition-property: box-shadow, transform;
+                    transition-property: box-shadow, transform;
+
+
+                    &:hover {
+                        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+                        -webkit-transform: scale(1.1);
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }
+
+        .optimazer {
+            display: flex;
+            justify-content: space-between;
+            /* Add this line */
+            align-items: center;
+            width: 100%;
+            /* Add this line */
+
+            /* Adjust widths for the child elements */
+            >* {
+                flex: 1;
+                margin: 0 5px;
+                /* Add spacing between the two containers */
+            }
+
+        }
+
+        .widgets {
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .CategorTable {
+            margin-top: 100px;
+        }
+
+
+
+
+    }
+
+
+}

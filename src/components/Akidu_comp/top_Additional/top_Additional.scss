@@ -1,0 +1,99 @@
+.Akidu_top_Additional {
+    display: flex;
+    //background-color: aqua;
+    width: 100%;
+
+    .sec {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 1;
+        padding: 10px;
+        // align-items: center;
+        box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+        -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+        border-radius: 10px;
+        height: 110px;
+        margin: 30px;
+       
+
+        .row1 {
+            display: flex;
+            justify-content: space-between;
+            
+            .title {
+                gap: 20px;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                font-weight: bold;
+                font-size: 14px;
+                color: gray;
+
+                .DUrl {
+                    align-items: center;
+                    justify-content: center;
+                    display: flex;
+
+                    button {
+                        background: transparent;
+                        border: none;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .percentage {
+                display: flex;
+                align-items: center;
+                font-size: 14px;
+
+                &.positive {
+                    color: green;
+                }
+
+                &.negative {
+                    color: red;
+                }
+
+
+
+            }
+           
+        }
+
+        .row2{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .counter {
+
+                font-size: 28px;
+                font-weight: 600;
+                display: flex;
+               // background-color: aqua;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        .row3{
+            display: flex;
+            align-items: end;
+            justify-content: end;
+
+            .icon {
+                font-size: 18px;
+                padding: 5px;
+                //background-color: rgb(125, 1, 1);
+                border-radius: 5px;
+                align-self: flex-end;
+
+
+            }
+        }
+    }
+
+
+}

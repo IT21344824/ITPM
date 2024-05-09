@@ -1,0 +1,227 @@
+.Analysis_foam1_formContainer {
+  .datatableTitle {
+
+    margin: 50px 0 0 15px;
+    width: 49%;
+    font-size: 24px;
+    color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    border-radius: 10px;
+
+  }
+
+  .box {
+    min-height: 77vh;
+    padding-top: 15px;
+    margin: 15px 20px 0 15px;
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    border-radius: 10px;
+
+
+
+    h1 {
+      padding-top: 50px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+
+
+      .row {
+        width: 100%;
+        margin-bottom:  10px ;
+        .titale {
+          margin: 0 10px 0 15px;
+          gap: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          //width: 100%;
+          //background-color: #dc3545;
+
+          .Amounts{
+            margin-left: 10px;
+          }
+        }
+
+        p{
+          display: flex;
+          justify-content: center;
+        }
+      }
+
+
+      div {
+        margin-bottom: 15px;
+
+        label {
+          margin-bottom: 5px;
+        }
+
+        input[type="number"] {
+          width: 100px;
+        }
+
+        input[type="text"] {
+          width: 200px;
+        }
+
+        select {
+          width: 160px;
+        }
+
+
+        input[type="text"],
+        input[type="number"],
+        select {
+          padding: 8px;
+          margin-bottom: 5px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: 16px;
+          transition: border-color 0.3s ease;
+
+          &:focus {
+            border-color: blue;
+            outline: none;
+          }
+        }
+
+        p {
+          margin: 5px 0;
+          font-size: 14px;
+        }
+      }
+
+      button {
+        padding: 10px 20px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:not(:last-child) {
+          margin-right: 10px;
+        }
+      }
+
+      button[type="submit"] {
+        background-color: green;
+        color: white;
+
+        &:hover {
+          background-color: darkgreen;
+        }
+      }
+
+      button[type="button"]:nth-of-type(2) {
+        background-color: red;
+        color: white;
+
+        &:hover {
+          background-color: darkred;
+        }
+      }
+
+      button[type="button"]:last-child {
+        background-color: blue;
+        color: white;
+
+        &:hover {
+          background-color: darkblue;
+        }
+      }
+
+      .buttonContainer {
+        display: flex;
+        gap: 10px;
+      }
+
+      .formContainer {
+        border: 2px solid #ccc;
+        padding: 20px;
+      }
+
+      .formContainer {
+        padding: 20px;
+      }
+
+      .newContainer {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .formTitle {
+        color: #333;
+        text-align: center;
+      }
+
+      .formGroup {
+        margin-bottom: 20px;
+      }
+
+      .formLabel {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .formInput,
+      .formSelect {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .formInput:focus,
+      .formSelect:focus {
+        outline: none;
+        border-color: #007bff;
+      }
+
+      .errorMessage {
+        color: #dc3545;
+        font-size: 0.8rem;
+        margin-top: 5px;
+      }
+
+      .buttonContainer {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .formButton {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .formButton:hover {
+        background-color: #0056b3;
+      }
+
+    }
+  }
+
+}

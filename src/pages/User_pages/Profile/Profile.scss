@@ -1,0 +1,154 @@
+.Profile {
+    display: flex;
+
+    .ProfieContainer {
+
+        flex: 6;
+
+        .container2 {
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .p_details {
+                margin: 4px;
+                border: 1px solid gray;
+                padding: 40px;
+                border-radius: 20px;
+                //width: 91%;
+                // position: relative;
+                // z-index: 3;
+                width: fit-content;
+                background: #f4f4f4;
+
+                .buttons {
+                    display: flex;
+                    justify-content: end;
+                    align-items: center;
+                    gap: 20px;
+
+                    .Cancel {
+                        padding: 5px 10px;
+                        background-color: rgb(201, 199, 197);
+                        color: white;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+
+                        &:active {
+                            transform: scale(0.90);
+                        }
+                    }
+
+                    .edit {
+                        padding: 5px 10px;
+                        background-color: rgb(0, 148, 240);
+                        color: white;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+
+                        &:active {
+                            transform: scale(0.90);
+                        }
+                    }
+                }
+
+
+
+                .change-hadder {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: rgb(220, 147, 20);
+                    font-weight: bold;
+                    font-size: 24px;
+                }
+
+                .delail {
+                    display: flex;
+                    //flex-wrap: wrap;
+                    // gap: 30px;
+                    flex-direction: column;
+                    // justify-content: space-around;
+
+
+
+                    .p_inputbox {
+                        position: relative;
+                        margin: 20px;
+
+                        .preHint {
+                            position: absolute;
+                            top: -10%; // Adjust as needed for vertical alignment
+                            right: 1vw; // Adjust as needed for horizontal alignment
+                            transform: translateY(-50%); // Center vertically
+                            font-style: italic;
+                            color: rgb(0, 30, 255);
+                            // Add more styling as needed
+                        }
+
+
+                        .p_new_hint {
+                            margin-left: 20px;
+                            margin-top: 4px;
+                            display: flex;
+                            //position: relative;
+                            top: 100px;
+                            font-size: 13px;
+                            color: red;
+                        }
+
+
+                        p,
+                        .In_txt,
+                        select {
+                            padding: 20px 10px 12px 30px;
+                            border: none;
+                            width: 25vw;
+                            background: #c7c7c7;
+                            border: 1px solid #00dfc4;
+                            color: #050505;
+                            font-weight: 300;
+                            border-radius: 25px;
+                            font-size: 1rem;
+                            box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+                                5px 5px 15px rgba(0, 0, 0, 0.35);
+                            word-wrap: break-word;
+                            resize: none;
+                            /* add this property to wrap long text */
+                        }
+
+
+                        span {
+                            color: #f7e740;
+                            border: 1px solid #00dfc4;
+                            background: #223243a6;
+                            font-size: 15px;
+                            padding: 0 8px;
+                            border-radius: 25px;
+                            position: absolute;
+                            /* position the span absolutely within the inputbox */
+                            top: -7px;
+                            /* move the span up by 10px from the top of the inputbox */
+                            left: 25px;
+                            /* move the span 25px from the left of the inputbox */
+                        }
+
+
+                    }
+                }
+
+
+            }
+        }
+
+
+    }
+
+
+
+
+
+}

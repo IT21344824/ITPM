@@ -1,0 +1,445 @@
+.app.dark {
+
+    background-color: #222;
+
+    color: rgb(156, 156, 156);
+
+    input {
+        color: white;
+    }
+
+    //-----------------------------------------------------------------------start of dashboard-------------------------------------------------------------------------------------------------
+    .home {
+
+        .widget,
+        .chart,
+        .featured,
+        .listContainer {
+            -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+        }
+
+
+
+        .chartGrid {
+            stroke: rgba(228, 228, 228, 0.219);
+
+        }
+
+        //table dashboard
+        .latest {
+
+            .listContainer,
+            .Product_listContainer {
+                -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+                -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+                box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            }
+
+            .Product_listTitle {
+                color: rgb(170, 170, 168);
+            }
+
+        }
+
+        .table {
+            background-color: #111;
+
+            .tableCell,
+            .cellWrapper,
+            .datagrid {
+                color: gray;
+            }
+        }
+
+        .navbar {
+            color: #999;
+            border-color: #333;
+
+            .search {
+                border-color: gray;
+            }
+        }
+
+
+
+    }
+
+    .navbar {
+        color: white;
+        background-color: #292929;
+
+        // .wrapper {
+        //     width: 100%;    
+        //     justify-content: space-between;
+
+        // }
+
+        .darkM {
+
+            color: #00d9ffdf;
+            border: 2px solid #00d9ff;
+            border-radius: 50%;
+            box-shadow: 0px 0px 30px 7px rgba(0, 246, 255, 0.73);
+            -webkit-box-shadow: 0px 0px 30px 7px rgba(0, 246, 255, 0.73);
+            -moz-box-shadow: 0px 0px 30px 7px rgba(0, 246, 255, 0.73);
+        }
+    }
+
+    .sidebar {
+        background-color: #111;
+        border-color: #333;
+
+        .top {
+            background-color: #202020;
+
+            .logo {
+                color: #999;
+            }
+        }
+
+        hr {
+            border-color: #333;
+
+        }
+
+        ul {
+
+            li {
+                span {
+                    color: #c7c7c8;
+                }
+
+                &:hover {
+
+                    background-color: #333;
+
+                }
+
+                .iocn {
+                    color: #c6c644;
+                    //background-color: rgba(128, 0, 128, 0.43);
+                }
+            }
+        }
+    }
+
+    //--------------------------------------------------------end of dashboard------------------------------------------------------------------------------
+
+
+
+    //---------------------------------------------------------start of other new parts------------------------------------------------------------------------------------------------------------------------
+    .datatable {
+        .datagrid {
+            color: gray;
+            border: none;
+
+            .viewButton,
+            .deleteButton,
+            .cellWithStatus {
+                color: gray;
+                border: none;
+            }
+        }
+
+
+    }
+
+    input {
+        background-color: transparent;
+    }
+
+    //-----------------------------------------------------------end of other new parts---------------------------------------------------------------------------
+
+
+    //--------------------------------------------------------------Start of product---------------------------------------------------------------------------
+    //all categories---
+    .categories {
+        .datatable {
+            .Category_all {
+
+                .Category_all_title,
+                .Category_add {
+                    color: rgb(114, 203, 227);
+
+                    .all {}
+                }
+
+                .Cat_datagrid,
+                .cat_add_from {
+                    color: rgb(128, 128, 128);
+                    border: none;
+
+                    label {
+                        color: rgb(215, 215, 215);
+                    }
+
+                    .viewButton,
+                    .deleteButton,
+                    .cellAction {
+                        color: rgb(172, 169, 169);
+                        border: none;
+                    }
+
+                    .viewButton {
+                        color: rgb(172, 169, 169);
+                        border: none;
+                        background-color: rgba(8, 8, 192, 0.395);
+                    }
+
+                    .deleteButton {
+                        color: rgb(172, 169, 169);
+                        background-color: rgba(154, 12, 41, 0.659);
+                    }
+                }
+
+
+                .Category_all_title,
+                .Cat_datagrid,
+                .Category_add,
+                .cat_add_from {
+                    -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+                    -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+                    box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+                }
+
+                .cat_btn {
+                    color: rgb(172, 169, 169);
+                    border: none;
+                    background-color: rgba(8, 8, 192, 0.395);
+                }
+            }
+        }
+    }
+
+    //popup category
+    .CatUpdate{
+        .popup{
+             background-color: #363636;
+             h1{
+                color: rgb(0, 200, 255);
+             }
+             label{
+                color: #ffffff;
+             }
+        }
+    }
+
+    //all products-----------------------------
+    .pro_table {
+        background-color: #222;
+
+        .datatable {
+            .datatableTitle {
+                color: rgb(0, 200, 255);
+            }
+
+            .datagrid {
+                color: rgb(128, 128, 128);
+                border: none;
+
+                .viewButton,
+                .deleteButton,
+                .cellAction {
+                    color: rgb(172, 169, 169);
+                    border: none;
+                }
+
+                .viewButton {
+                    color: rgb(172, 169, 169);
+                    border: none;
+                    background-color: rgba(8, 8, 192, 0.395);
+                }
+
+                .deleteButton {
+                    color: rgb(172, 169, 169);
+                    background-color: rgba(154, 12, 41, 0.659);
+                }
+            }
+
+
+            .datatableTitle,
+            .datagrid {
+                -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+                -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+                box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            }
+        }
+    }
+
+
+    //new---
+    .newContainer {
+
+        .top,
+        .bottom {
+            -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+        }
+
+        .right {
+            label{
+                color: white;
+            }
+            .P_cat {
+                color: rgb(172, 169, 169);
+                background-color: transparent;
+            }
+
+            .Description {
+                color: rgb(172, 169, 169);
+                background-color: transparent;
+            }
+
+            .status{
+                .line_height{
+                    label{ 
+                        //accent-color: #04fbef;
+                        color: #999;
+                    }                    
+                }
+            }
+        }
+    }
+
+    //single products--------
+    .pro_single {
+        background-color: #222;
+        width: 100%;
+
+        .top {
+            .top_pre {
+                -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+                -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+                box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+
+                .pre_title {
+                    color: rgb(0, 200, 255);
+
+                    button {
+                        background: #ffc800;
+                    }
+                }
+
+                .animation_p_id {
+
+                    .p_details {
+                        background: #9f9f9f;
+
+                        .change-hadder{
+                            color: #ffee00;
+                        }
+                    }
+
+
+                }
+            }
+        }
+    }
+
+    //popupedit
+    .popup-overlay{
+           .popup{
+             background-color: #363636;
+             h1{
+                font-weight: bold;
+                color: rgb(0, 200, 255);
+             }
+             label{
+                color: #ffffff;
+             }
+             .full_from{
+                .line_rows{
+                    .top{
+                        .details_tag{
+                            color: #f8df009b;
+                        }                       
+                    }
+                    .formInput{
+                            .P_cat ,textarea{
+                                resize: none;
+                                background-color: #363636;
+                            }
+                    }
+                }
+             }
+        }
+    }
+         
+
+    //-----------------------------------------------------------------end of product-------------------------------------------------------------
+
+
+
+    //--------------------------------------------------------------Additional of product---------------------------------------------------------------------------
+    .Addi_nav {
+
+        .datatableTitle {
+            color: rgb(255, 255, 255);
+            -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+        }
+    }
+
+    .Home_comp {
+
+        .top_pre {
+            .pre_title {
+                color: rgb(0, 200, 255);
+            }
+
+            -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+
+            .animation_p_id {
+                .p_details {
+                    background: #5b5b5b;
+                }
+            }
+        }
+    }
+
+    .product_banner {
+
+        .datatableTitle {
+            color: rgb(0, 200, 255);
+            -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+        }
+
+        .banner {
+            -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+        }
+    }
+
+    .Add_more_comp,
+    .AboutUs,
+    .ApplyForm,
+    .ConactUs {
+        .top_pre {
+            .pre_title {
+                color: rgb(0, 200, 255);
+            }
+
+            -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+
+            .animation_p_id {
+                .p_details {
+                    background: #5b5b5b;
+                }
+            }
+        }
+    }
+
+    //-----------------------------------------------------------------Additional of product-------------------------------------------------------------
+
+}

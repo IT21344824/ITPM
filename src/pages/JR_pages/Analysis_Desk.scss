@@ -1,0 +1,45 @@
+.Analysis_Desk_formContainer {
+  
+
+  .newContainer {
+    position: relative; // Ensure the container is positioned relatively
+
+    .horizontalContainer {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around; // Adjust as needed
+      align-items: center; // Adjust as needed
+      flex-wrap: wrap; // Allow boxes to wrap to next line if needed
+
+      .box {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 5px;
+        width: calc(100% / 3 - 50px); // Divide equally among the boxes, minus margin
+        box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+        -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+        border-radius: 10px;
+
+        display: flex;
+        justify-content: space-between;
+        .label {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .all_charts {
+      display: flex;
+      justify-content: space-between; // Ensures equal space between the charts
+    
+      /* Adjust width for each chart */
+      > * {
+        flex: 1; // Each chart takes up equal space
+        max-width: calc(50% - 10px); // Adjust as needed and consider margin
+      }
+    }
+    
+  }
+
+}
