@@ -56,7 +56,7 @@ const Sidebar = ({ userId }) => {
         <div className="sidebar">
             <div className="top">
                 <Link to="/" style={{ textDecoration: "none" }} >
-                    <span className="logo"> Elite</span>
+                    <span className="logo"> Sales Optimizer </span>
                     <img src="/logo.jpeg" alt="" className="logo" />
                 </Link>
 

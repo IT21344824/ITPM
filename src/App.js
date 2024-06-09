@@ -42,6 +42,10 @@ import ForecastList from "./pages/Avishka_pages/Avishka_pages";
 import Trendoptimize from "./pages/Avishka_pages/Trendoptimize_page";
 import Forecast_New from "./pages/Avishka_pages/new/Add_Prodcut";
 
+// import ForecastList from "./pages/Avishka_pages/Avishka_pages";
+// import Trendoptimize from "./pages/Avishka_pages/Trendoptimize_page";
+// import Forecast_New from "./pages/Avishka_pages/new/Add_Prodcut";
+
 
 // promotional_magagement
 import PromotionalList from "./pages/Najas_pages/Najas_pages";
@@ -78,7 +82,7 @@ function App() {
             <Route path="SignUp" element={<SignUp />} />
 
             <Route index element={<RequireAuth> <Home userId={currentUser ? currentUser.uid : null} /></RequireAuth>} />
-            <Route path="Profile" element={<RequireAuth> <Profile userId={currentUser ? currentUser.uid : null}  /> </RequireAuth>} />
+            <Route path="Profile" element={<RequireAuth> <Profile userId={currentUser ? currentUser.uid : null} /> </RequireAuth>} />
 
 
             <Route path="Employees" >
@@ -102,9 +106,9 @@ function App() {
 
 
 
-            
-             {/* --------------------------------------------PLAnalysis start -------------------------------------------------*/}
-             <Route path="PLAnalysis" >
+
+            {/* --------------------------------------------PLAnalysis start -------------------------------------------------*/}
+            <Route path="PLAnalysis" >
               <Route index element={<RequireAuth> <AL_Home userId={currentUser ? currentUser.uid : null} /> </RequireAuth>} />
               <Route path=":id" element={<RequireAuth> <Analysis_Desk userId={currentUser ? currentUser.uid : null} /> </RequireAuth>} />
               <Route path="list" element={<RequireAuth> <AL_List userId={currentUser ? currentUser.uid : null} /> </RequireAuth>} />
@@ -117,7 +121,9 @@ function App() {
             {/* --------------------------------------------Forecast start -------------------------------------------------*/}
             <Route path="Forecast" >
               {/* <Route index element={<RequireAuth> <ForecastList userId={currentUser ? currentUser.uid : null} /> </RequireAuth>} /> */}
-              <Route index element={<RequireAuth> <Trendoptimize userId={currentUser ? currentUser.uid : null} /> </RequireAuth>} />
+              {/* <Route index element={<RequireAuth> <Trendoptimize userId={currentUser ? currentUser.uid : null} /> </RequireAuth>} />
+              <Route path="ForecastNew" element={<RequireAuth> <Forecast_New userId={currentUser ? currentUser.uid : null} /> </RequireAuth>} /> */}
+              <Route index element={<RequireAuth> <ForecastList userId={currentUser ? currentUser.uid : null} /> </RequireAuth>} />
               <Route path="ForecastNew" element={<RequireAuth> <Forecast_New userId={currentUser ? currentUser.uid : null} /> </RequireAuth>} />
 
             </Route>

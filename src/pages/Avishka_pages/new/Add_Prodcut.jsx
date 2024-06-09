@@ -43,16 +43,16 @@ const Add_Prodcut = ({ userId }) => {
     // Product data
     const initialFormData = {
         Item_code: "",
-        Type: "",
-        Color: "",
+        Color: "",        
+        Size: "",
         Brand: "",
         Category: "",
         Material: "",
-        Cost: "",
+        price: "",
         Desing_Type: "",
         img: [], // add imgs to formData to store multiple image urls
     };
-
+    
     const [formData, setFormData] = useState(initialFormData);
     //------------
 
@@ -108,22 +108,85 @@ const Add_Prodcut = ({ userId }) => {
         setFormData({ ...formData, [name]: value });
     };
 
+    
+    const [prediction, setPrediction] = useState(null);
+
+    const handleClick = async () => {
+        try {
+            // Convert string values to numeric
+            const numericBrand = parseInt(formData.Brand);
+            const numericCategory = parseInt(formData.Category);
+            const numericColor = parseInt(formData.Color);
+            const numericSize = parseInt(formData.Size);
+            const numericMaterial = parseInt(formData.Material);
+            
+            const data = {
+                Brand: numericBrand,
+                Category: numericCategory,
+                Color: numericColor,
+                Size: numericSize,
+                Material: numericMaterial,
+            };
+    
+            console.log(data);
+    
+            try {
+                const response = await fetch('http://127.0.0.1:5000/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+    
+                if (response.ok) {
+                    console.log(response);
+                }
+    
+                const result = await response.json();
+                setPrediction(result.predicted_price); // Assuming the response has a 'prediction' field
+            } catch (error) {
+                console.error('There was a problem with your fetch operation:', error);
+            }
+        } catch (error) {
+            console.error('There was a problem:', error);
+        }
+    };
+    
 
     const handleSubmit = async (event) => {
-        event.preventDefault();       
+        event.preventDefault();
 
+        // Mapping Size, Brand, Category, Color, and Material values
+        const sizeMap = ['XS', 'M', 'XL', 'XXL', 'S', 'L'];
+        const brandMap = ['New Balance', 'Under Armour', 'Nike', 'Adidas', 'Reebok', 'Puma'];
+        const categoryMap = ['Dress', 'Jeans', 'Shoes', 'Sweater', 'Jacket', 'T-shirt'];
+        const colorMap = ['White', 'Black', 'Red', 'Green', 'Yellow', 'Blue'];
+        const materialMap = ['Nylon', 'Silk', 'Wool', 'Cotton', 'Polyester', 'Denim'];
+
+        formData.Size = sizeMap[parseInt(formData.Size)];
+        formData.Brand = brandMap[parseInt(formData.Brand)];
+        formData.Category = categoryMap[parseInt(formData.Category)];
+        formData.Color = colorMap[parseInt(formData.Color)];
+        formData.Material = materialMap[parseInt(formData.Material)];
         try {
-                     
-            // Add the product data to the database
             const newProductRef = await addDoc(collection(db, "Forecast"), {
                 ...formData,
-               
                 timeStamp: serverTimestamp(),
             });
             console.log("Document written with ID: ", newProductRef.id);
-           
-            setFormData(initialFormData);
-         
+            setFormData({
+                ...formData,
+                Item_code: "",
+                Size: "",
+                Color: "",
+                Brand: "",
+                Category: "",
+                Material: "",
+                price: "",
+                Desing_Type: "",
+                img: [],
+            });
         } catch (error) {
             console.error("Error adding document: ", error);
         }
@@ -201,7 +264,7 @@ const Add_Prodcut = ({ userId }) => {
                     </div>
 
                     <div className="right">
-                        <form onSubmit={handleSubmit}   >
+                        <form  >
                             {/*------------------------------------------------------------------*/}
 
                             <div className="formInput img_tag">
@@ -254,116 +317,148 @@ const Add_Prodcut = ({ userId }) => {
                             </div>
 
                             <div className={`formInput ${ShowHint ? 'error' : ''}`}>
-                                <label> Type : </label>
-                                <input
-                                    type="text"
-                                    name="Type"
-                                    value={formData.Type}
+                                <label>Size : </label>
+                                <select
+                                    name="Size"
+                                    value={formData.Size}
                                     onChange={handleInputChange}
-                                    placeholder="Enter Type...."
-                                    //required
-                                    // add a class to the input when ShowHint is true
-                                    className={ShowHint && !formData.Type ? 'error' : ''}
-                                />
+                                >
+                                    <option value="">Select SizeType</option>
+                                    <option value="0">XS</option>
+                                    <option value="1">M</option>
+                                    <option value="2">XL</option>
+                                    <option value="3">XXL</option>
+                                    <option value="4">S</option>
+                                    <option value="5">L</option>
+                                </select>
                                
                             </div>
 
                             <div className={`formInput ${ShowHint ? 'error' : ''}`}>
                                 <label> Color : </label>
-                                <input
-                                    type="text"
+                                <select
                                     name="Color"
                                     value={formData.Color}
                                     onChange={handleInputChange}
-                                    placeholder="Enter Color...."
-                                    //required
-                                    // add a class to the input when ShowHint is true
-                                    className={ShowHint && !formData.Color ? 'error' : ''}
-                                />
+                                >
+                                    <option value="">Select color</option>
+                                    <option value="0">White</option>
+                                    <option value="1">Black</option>
+                                    <option value="2">Red</option>
+                                    <option value="3">Green</option>
+                                    <option value="4">Yellow</option>
+                                    <option value="5">Blue</option>
+                                </select>
                                
                             </div>
 
                             <div className={`formInput ${ShowHint ? 'error' : ''}`}>
                                 <label> Brand : </label>
-                                <input
-                                    type="text"
+                                <select
                                     name="Brand"
                                     value={formData.Brand}
                                     onChange={handleInputChange}
-                                    placeholder="Enter Brand...."
-                                    //required
-                                    // add a class to the input when ShowHint is true
-                                    className={ShowHint && !formData.Brand ? 'error' : ''}
-                                />
+                                >
+                                    <option value="">Select Brand</option>
+                                    <option value="0">New Balance</option>
+                                    <option value="1">Under Armour</option>
+                                    <option value="2">Nike</option>
+                                    <option value="3">Adidas</option>
+                                    <option value="4">Reebok</option>
+                                    <option value="5">Puma</option>
+                                 
+                                </select>
                                
                             </div>
 
                             <div className={`formInput ${ShowHint ? 'error' : ''}`}>
                                 <label> Category : </label>
-                                <input
-                                    type="text"
+                                <select
                                     name="Category"
                                     value={formData.Category}
                                     onChange={handleInputChange}
-                                    placeholder="Enter Category...."
-                                    //required
-                                    // add a class to the input when ShowHint is true
-                                    className={ShowHint && !formData.Category ? 'error' : ''}
-                                />
+                                >
+                                    <option value="">Select Category</option>
+                                    <option value="0">Dress</option>
+                                    <option value="1">Jeans</option>
+                                    <option value="2">Shoes</option>
+                                    <option value="3">Sweater</option>
+                                    <option value="4">Jacket</option>
+                                    <option value="5">T-shirt</option>
+                                 
+                                </select>
                                
                             </div>
 
                             <div className={`formInput ${ShowHint ? 'error' : ''}`}>
                                 <label> Material : </label>
-                                <input
-                                    type="text"
+                                <select
                                     name="Material"
                                     value={formData.Material}
                                     onChange={handleInputChange}
-                                    placeholder="Enter Material...."
-                                    //required
-                                    // add a class to the input when ShowHint is true
-                                    className={ShowHint && !formData.Material ? 'error' : ''}
-                                />
+                                >
+                                    <option value="">Select Material</option>
+                                    <option value="0">Nylon</option>
+                                    <option value="1">Silk</option>
+                                    <option value="2">Wool</option>
+                                    <option value="3">Cotton</option>
+                                    <option value="4">Polyester</option>
+                                    <option value="5">Denim</option>
+                                 
+                                </select>
                                
                             </div>
 
                             <div className="formInput">
-                                <label>Cost :</label>
-                                <input
-                                    type="number"
-                                    name="Cost"
-                                    value={formData.Cost}
-                                    onChange={handleInputChange}
-                                    min="0"  // Set minimum value to 0 or adjust as needed
-                                    placeholder="Enter  Quantity...."
-                                    className={ShowHint && (!formData.Cost || isNaN(formData.Cost)) ? 'error' : ''}
-                                />
-                               
-                            </div>
+                         
+                        <label>Predicted Price:</label>
+                        <input
+                            type="number"
+                            name="price"
+                            label="Predicted Price"
+                            variant="outlined"
+                            value={prediction || ""} // Use prediction state variable to control the input value
+                            readOnly // Make the input field read-only
+                            min="0"
+                            placeholder="Predicted Price"
+                        />
+                    </div>
 
-                           
-
-                            <div className={`formInput ${ShowHint ? 'error' : ''}`}>
-                                <label> Desing_Type : </label>
-                                <input
-                                    type="text"
-                                    name="Desing_Type"
-                                    value={formData.Desing_Type}
-                                    onChange={handleInputChange}
-                                    placeholder="Enter Desing_Type...."
-                                    //required
-                                    // add a class to the input when ShowHint is true
-                                    className={ShowHint && !formData.Desing_Type ? 'error' : ''}
-                                />
-                               
-                            </div>
-
-                            
-
-                            <div className="formButton">
-                                <button disabled={per !== null && per < 100} type="submit" className="submit" >Add </button>
-                                <button type="reset" className="reset" > Clear </button>
+                            <div className="formButton" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <button
+                                    disabled={per !== null && per < 100}
+                                   
+                                    className="submit"
+                                    style={{ flex: '1', marginRight: '10px' }}
+                                    onClick={handleSubmit}
+                                >
+                                    Add
+                                </button>
+                                <button
+                                    type="reset"
+                                    className="reset"
+                                    style={{ flex: '1', marginRight: '10px' }}
+                                >
+                                    Clear
+                                </button>
+                                <div style={{ flex: '1' }}>
+                                    <button
+                                        onClick={handleClick}
+                                        style={{
+                                            backgroundColor: 'blue',
+                                            color: 'white',
+                                            padding: '10px 20px',
+                                            borderRadius: '5px',
+                                            border: 'none',
+                                            fontSize: '16px',
+                                            cursor: 'pointer',
+                                            width: '100%', // Make the button fill the entire space
+                                        }}
+                                    >
+                                        PredictPrice
+                                    </button>
+                                    {prediction !== null && <p>Prediction: {prediction}</p>}
+                                </div>
                             </div>
                         </form>
                     </div>

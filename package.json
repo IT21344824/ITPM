@@ -20,6 +20,7 @@
     "firebase": "^9.17.1",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.8.2",
     "openai": "^4.29.1",
     "pdfjs-dist": "^3.6.172",
     "react": "^18.2.0",
@@ -35,6 +36,7 @@
     "react-toastify": "^9.1.2",
     "recharts": "^2.4.3",
     "sass": "^1.58.1",
+    "sweetalert2": "^11.10.8",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
